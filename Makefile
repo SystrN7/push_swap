@@ -6,7 +6,7 @@
 #    By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/05 14:25:53 by fgalaup           #+#    #+#              #
-#    Updated: 2021/05/07 17:13:45 by fgalaup          ###   ########lyon.fr    #
+#    Updated: 2021/05/10 13:50:18 by fgalaup          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SORTER_NAME		= push_swap
 CHECKER_NAME	= checker
 
 SRCS_COMMON		=		./Sources/_Common/Stack/stack.c \
+						./Sources/_Common/Stack/stack_is_sort.c \
 						./Sources/_Common/Instruction/Type/swap_first_a_b.c \
 						./Sources/_Common/Instruction/Type/swap_first_a.c \
 						./Sources/_Common/Instruction/Type/swap_first_b.c \
@@ -26,6 +27,7 @@ SRCS_COMMON		=		./Sources/_Common/Stack/stack.c \
 						./Sources/_Common/Instruction/Type/reverse_rotate_a_b.c \
 						./Sources/_Common/Instruction/Type/reverse_rotate_a.c \
 						./Sources/_Common/Instruction/Type/reverse_rotate_b.c \
+						./Sources/_Common/Instruction/instruction.c \
 						./Sources/_Common/Utilities/error.c
 
 SRCS_SORTER		=		./Sources/Sorter/sorter.c
@@ -35,6 +37,8 @@ SRCS_CHECKER	=		./Sources/Checker/checker.c
 HEADER_DIR		=		./Sources
 
 HEADER			=		$(HEADER_DIR)/common_stack.h \
+						$(HEADER_DIR)/common_instruction.h \
+						$(HEADER_DIR)/common_error.h \
 						$(HEADER_DIR)/sorter.h \
 						$(HEADER_DIR)/checker.h
 

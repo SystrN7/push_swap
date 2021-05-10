@@ -6,11 +6,11 @@
 /*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 16:04:02 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/07 16:52:46 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/05/10 11:46:09 by fgalaup          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "common_stack.h"
+#include "common_instruction.h"
 
 void	rotate_a(t_common_context *context)
 {

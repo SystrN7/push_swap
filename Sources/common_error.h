@@ -6,7 +6,7 @@
 /*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 12:32:38 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/10 10:41:39 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/05/10 11:47:48 by fgalaup          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ enum					e_error_code
 	ERROR_INSTRUCTION_UNKNOWN,
 };
 
-const struct		s_error_messages
+struct		s_error_messages
 {
 	int					code;
 	char				*message;
-} error_messages[] = {
+} const static error_messages[] = {
 	{ERROR_UNDIFINED, "Undifined error (Just take a cooffe ☕)."},
 	{ERROR_STD, "Is not an error for my bro."},
 	{ERROR_ARG_NOT_NUMBER, "%s: numeric argument required"},

@@ -6,7 +6,7 @@
 /*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 10:07:58 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/10 10:32:26 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/05/10 13:49:29 by fgalaup          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ struct s_instruction
 	int			type;
 	const char	*token;
 	void		(*do_instruction)(t_common_context *context);
-} const instruction_set[] = {
+} const static instruction_set[] = {
 	{INSTRUCTION_SWAP_FIRST_A_B, "ss", &swap_first_a_b},
 	{INSTRUCTION_SWAP_FIRST_A, "sa", &swap_first_a},
 	{INSTRUCTION_SWAP_FIRST_B, "sb", &swap_first_b},
@@ -65,5 +65,7 @@ struct s_instruction
 	{INSTRUCTION_REVERSE_ROTATE_B, "rrb", &reverse_rotate_b},
 	{STOP, NULL, NULL}
 };
+
+void	intruction_exec(t_common_context *context);
 
 #endif
