@@ -6,7 +6,7 @@
 /*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 14:38:42 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/10 13:49:47 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/05/10 15:22:48 by fgalaup          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	checker_init(t_common_context *context, char const *argv[])
 	ft_managed_termination_params(context);
 	context->stack_a = stack_create(argv + 1);
 	context->stack_b = NULL;
-	
-	// context->sort_instructions = ;
 }
 
 void	checker_start(char const *argv[])
@@ -35,7 +33,7 @@ void	checker_start(char const *argv[])
 	t_common_context	*context;
 
 	context = ft_managed_malloc(sizeof(t_common_context));
-	ft_memset(&context, 0, sizeof(t_common_context));
+	ft_memset(context, 0, sizeof(t_common_context));
 	checker_init(context, argv);
 	intruction_exec(context);
 	if (stack_is_sort(context->stack_a) && context->stack_b == NULL)

@@ -6,7 +6,7 @@
 #    By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/05 14:25:53 by fgalaup           #+#    #+#              #
-#    Updated: 2021/05/10 13:50:18 by fgalaup          ###   ########lyon.fr    #
+#    Updated: 2021/05/10 14:46:00 by fgalaup          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ LIBFT			=		$(LIBFT_DIR)/libft.a
 
 # Workings vars
 CC				=		clang
-CFLAGS			=		-Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS			=		-Wall -Wextra -Werror -g3 -fsanitize=address -fsanitize=undefined
 CMLXFLAGS		=		
 
 RM				= rm -f
