@@ -6,7 +6,7 @@
 /*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 16:04:02 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/10 15:09:01 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/05/10 16:29:03 by fgalaup          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ void	rotate_a(t_common_context *context)
 	if (context->stack_a == NULL)
 		return ;
 	link_to_move = ft_blst_first(context->stack_a);
-	link_to_move->next = NULL;
 	context->stack_a = ft_blst_last(context->stack_a);
-	context->stack_a->next = link_to_move;
+	if (link_to_move == context->stack_a)
+		return ;
+	link_to_move->next->prev = NULL;
+	link_to_move->next = NULL;
 	link_to_move->prev = context->stack_a;
+	context->stack_a->next = link_to_move;
 }
