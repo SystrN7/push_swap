@@ -6,7 +6,7 @@
 /*   By: seruiz <seruiz@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 14:47:56 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/11 14:31:09 by seruiz           ###   ########lyon.fr   */
+/*   Updated: 2021/05/11 15:59:32 by seruiz           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,35 +55,41 @@ void	sort_small_stack(t_common_context *context)
 			}
 }
 
+int		ft_get_min_pos(t_common_context *context)
+{
+	int						i;
+	int						pos;
+	int						min;
+	t_bidirectional_list	*buff;
+
+	buff = context->stack_a;
+	i = 0;
+	pos = 0;
+	buff = ft_blst_first(context->stack_a);
+	min = (int)buff->content;
+	pos = 0;
+	while (buff)
+	{
+		if ((int)buff->content < min)
+		{
+			min = (int)buff->content;
+			pos = i;
+		}
+		buff = buff->next;
+		i++;
+	}
+	return (pos);
+}
+
 void	sort_medium_stack(t_common_context *context)
 {
 	int	targets;
 	int	pos;
-	int	min;
-	int	i;
-	t_bidirectional_list	*buff;
 
-	pos = 0;
-	i = 0;
 	targets = context->stack_len - 3;
-	buff = context->stack_a;
-	min = (int)buff->content;
 	while (ft_lstsize((t_list *)context->stack_b) < targets)
 	{
-		buff = ft_blst_first(context->stack_a);
-		min = (int)buff->content;
-		pos = 0;
-		while (buff)
-		{
-			if ((int)buff->content < min)
-			{
-				min = (int)buff->content;
-				pos = i;
-			}
-			buff = buff->next;
-			i++;
-		}
-		i = 0;
+		pos = ft_get_min_pos(context);
 		if ((unsigned long)pos < (context->stack_len / 2) + (context->stack_len % 2))
 		{
 			while (pos > 0)
