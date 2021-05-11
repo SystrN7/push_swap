@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_a.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: seruiz <seruiz@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 16:04:02 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/10 16:29:03 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/05/10 16:47:28 by seruiz           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ void	rotate_a(t_common_context *context)
 	link_to_move->next = NULL;
 	link_to_move->prev = context->stack_a;
 	context->stack_a->next = link_to_move;
+	write (1, "ra\n", 3);
 }
