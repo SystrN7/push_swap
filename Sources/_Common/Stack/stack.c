@@ -6,7 +6,7 @@
 /*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 14:51:42 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/07 17:14:39 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/05/11 16:06:49 by fgalaup          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,24 @@ t_blst	stack_create(char const *argv[])
 			error_fatal(ERROR_ARG_NOT_NUMBER, argv[i]);
 		if (number_size > 10 || number > INT_MAX || number < INT_MIN)
 			error_fatal(ERROR_ARG_INT_BIGGER, argv[i]);
+		if (stack_double_exist(stack, (void *)number))
+			error_fatal(ERROR_ARG_NUMBER_ALREADY_EXISTS, argv[i]);
 		ft_blst_new_back(&stack, (void *)number, NULL);
 		i++;
 	}
 	return (stack);
+}
+
+t_bool	stack_double_exist(t_bidirectional_list *stack, void *number)
+{
+	t_bidirectional_list	*it;
+
+	it = stack;
+	while (it)
+	{
+		if (it->content == number)
+			return (FT_TRUE);
+		it = it->prev;
+	}
+	return (FT_FALSE);
 }

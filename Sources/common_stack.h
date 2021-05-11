@@ -6,7 +6,7 @@
 /*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 14:37:31 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/10 10:25:42 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/05/11 16:07:34 by fgalaup          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 t_blst	stack_create(char const *argv[]);
 t_bool	stack_is_sort(t_bidirectional_list *stack);
+t_bool	stack_double_exist(t_bidirectional_list *stack, void *number);
 
 
 
