@@ -6,7 +6,7 @@
 /*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 10:07:58 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/10 13:49:29 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/05/12 11:22:00 by fgalaup          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ struct s_instruction
 	{STOP, NULL, NULL}
 };
 
-void	intruction_exec(t_common_context *context);
+void	intruction_read_exec(t_common_context *context);
+void	intruction_add_exec(t_common_context *context, int instuction_code);
+void	intruction_show_list(t_common_context *context);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 12:34:01 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/07 17:16:57 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/05/11 13:21:19 by fgalaup          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ typedef struct s_common_context
 	t_bidirectional_list	*stack_a;
 	t_bidirectional_list	*stack_b;
 
-	t_list					*instruction_set;
-	t_list					*sort_instructions;
+	struct s_instruction	*instruction_set;
+	t_bidirectional_list	*sort_instructions;
 }				t_common_context;
 
 #endif
