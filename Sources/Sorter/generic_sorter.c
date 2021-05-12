@@ -6,7 +6,7 @@
 /*   By: seruiz <seruiz@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 12:17:33 by seruiz            #+#    #+#             */
-/*   Updated: 2021/05/12 15:11:29 by seruiz           ###   ########lyon.fr   */
+/*   Updated: 2021/05/12 16:58:56 by seruiz           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,25 +44,24 @@ int		ft_get_num_pos(t_bidirectional_list	*stack, int	min, int max)
 void	extract_chunk(t_common_context *context, int min, int max)
 {
 	int	pos;
+	int len;
 
 	pos = ft_get_num_pos(context->stack_a, min, max);
-	//printf("pos = %d\nmin = %d\nmax = %d\n", pos, min, max);
+	len = ft_lstsize((t_list *)context->stack_a);
 	while (pos != -2147483648 && context->stack_a)
 	{
-		if ((unsigned long)pos < (context->stack_len / 2) + (context->stack_len % 2))
+		if (pos < (len / 2) + (len % 2))
 		{
 			while (pos > 0)
 			{
 				intruction_add_exec(context, INSTRUCTION_ROTATE_A);
 				pos--;
 			}
-			//ft_blst_show(context->stack_a);
 			intruction_add_exec(context, INSTRUCTION_POP_A_PUSH_B);
-			//ft_blst_show(context->stack_a);
 		}
 		else
 		{
-			while ((int)context->stack_len - ft_lstsize((t_list *)context->stack_b) - pos > 0)
+			while (context->stack_len - ft_lstsize((t_list *)context->stack_b) - pos > 0)
 			{
 				intruction_add_exec(context, INSTRUCTION_REVERSE_ROTATE_A);
 				pos++;
@@ -70,24 +69,64 @@ void	extract_chunk(t_common_context *context, int min, int max)
 			intruction_add_exec(context, INSTRUCTION_POP_A_PUSH_B);
 		}
 		pos = ft_get_num_pos(context->stack_a, min, max);
-		//printf("pos = %d\n", pos);
+		len = ft_lstsize((t_list *)context->stack_a);
 	}
 }
 
-void	repush_chunk(t_common_context *context, int	min, int max)
+int		ft_get_max_pos(t_bidirectional_list *stack)
 {
-	int						actual;
-	int						i;
 	int						pos;
+	int						max_hold;
+	int						i;
 	t_bidirectional_list	*buff;
 
-	buff = context->stack_a;
+	buff = ft_blst_first(stack);
 	i = 0;
-	actual = max;
+	pos = 0;
+	max_hold = 0;
 	while (buff)
 	{
-		pos = ft_get_num_pos(context->stack_b, min, max);
+		if ((int)buff->content >= max_hold)
+		{
+			max_hold = (int)buff->content;
+			pos = i;
+		}
+		i++;
 		buff = buff->next;
+	}
+	return (pos);
+}
+
+
+void	repush_stack(t_common_context *context)
+{
+	int	pos;
+	int len;
+
+	pos = ft_get_max_pos(context->stack_b);
+	len = ft_lstsize((t_list *)context->stack_b);
+	while (context->stack_b)
+	{
+		if (pos < (len / 2) + (len % 2))
+		{
+			while (pos > 0)
+			{
+				intruction_add_exec(context, INSTRUCTION_ROTATE_B);
+				pos--;
+			}
+			intruction_add_exec(context, INSTRUCTION_POP_B_PUSH_A);
+		}
+		else
+		{
+			while (pos < len)
+			{
+				intruction_add_exec(context, INSTRUCTION_REVERSE_ROTATE_B);
+				pos++;
+			}
+			intruction_add_exec(context, INSTRUCTION_POP_B_PUSH_A);
+		}
+		pos = ft_get_max_pos(context->stack_b);
+		len = ft_lstsize((t_list *)context->stack_b);
 	}
 }
 
@@ -99,18 +138,17 @@ void	generic_sorter(t_common_context *context)
 	int	max;
 
 	if (context->stack_len > 200)
-		chunks = 10;
+		chunks = 11;
 	else
 		chunks = 5;
 	chunk_size = context->stack_len / chunks;
-	//printf("chunk size = %d\n", chunk_size);
 	min = 0;
 	max = chunk_size - 1;
 	while ((unsigned int)max < context->stack_len)
 	{
-		printf("min = %d\nmax = %d\n", min, max);
 		extract_chunk(context, min, max);
 		min = min + chunk_size;
 		max = max + chunk_size;
 	}
+	repush_stack(context);
 }
