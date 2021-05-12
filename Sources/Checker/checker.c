@@ -6,7 +6,7 @@
 /*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 14:38:42 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/10 15:22:48 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/05/11 16:36:27 by fgalaup          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	checker_start(char const *argv[])
 	context = ft_managed_malloc(sizeof(t_common_context));
 	ft_memset(context, 0, sizeof(t_common_context));
 	checker_init(context, argv);
-	intruction_exec(context);
+	intruction_read_exec(context);
 	if (stack_is_sort(context->stack_a) && context->stack_b == NULL)
 		ft_putstr_fd(standard_output, "OK\n");
 	else

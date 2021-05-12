@@ -6,7 +6,7 @@
 /*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 12:32:38 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/10 11:47:48 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/05/11 16:06:39 by fgalaup          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ enum					e_error_code
 	ERROR_UNDIFINED,
 	ERROR_ARG_NOT_NUMBER,
 	ERROR_ARG_INT_BIGGER,
+	ERROR_ARG_NUMBER_ALREADY_EXISTS,
 	ERROR_INSTRUCTION_UNKNOWN,
 };
 
@@ -35,11 +36,12 @@ struct		s_error_messages
 	int					code;
 	char				*message;
 } const static error_messages[] = {
-	{ERROR_UNDIFINED, "Undifined error (Just take a cooffe ☕)."},
-	{ERROR_STD, "Is not an error for my bro."},
-	{ERROR_ARG_NOT_NUMBER, "%s: numeric argument required"},
+	{ERROR_UNDIFINED, "undifined error (Just take a cooffe ☕)."},
+	{ERROR_STD, "is not an error for my bro."},
+	{ERROR_ARG_NOT_NUMBER, "%s: numeric argument is required"},
 	{ERROR_ARG_INT_BIGGER, "`%s': numeric is bigger than interger"},
-	{ERROR_INSTRUCTION_UNKNOWN, "`%s': unvalid instruction found."},
+	{ERROR_ARG_NUMBER_ALREADY_EXISTS, "`%s': number already exists in stack"},
+	{ERROR_INSTRUCTION_UNKNOWN, "`%s': unvalid instruction found"},
 	{0, NULL}
 };
 
