@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seruiz <seruiz@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 14:47:56 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/12 12:48:29 by seruiz           ###   ########lyon.fr   */
+/*   Updated: 2021/05/12 13:09:40 by fgalaup          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ void	sorter_init(t_common_context *context, char const *argv[])
 	ft_managed_termination_params(context);
 	context->stack_a = stack_create(argv + 1);
 	context->stack_b = NULL;
+	stack_create_continuous_list(context);
 }
 
 void	sorter_start(char const *argv[])

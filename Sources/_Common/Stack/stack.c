@@ -6,7 +6,7 @@
 /*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 14:51:42 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/11 16:06:49 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/05/12 13:02:57 by fgalaup          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,43 @@ t_bool	stack_double_exist(t_bidirectional_list *stack, void *number)
 		it = it->prev;
 	}
 	return (FT_FALSE);
+}
+
+static int	number_of_inferior_value(t_bidirectional_list *it, long long number)
+{
+	int	continuous_number;
+
+	continuous_number = 0;
+	while (it)
+	{
+		if (number > (long long)it->content)
+			continuous_number++;
+		it = it->next;
+	}
+	return (continuous_number);
+}
+
+void	stack_create_continuous_list(t_common_context *context)
+{
+	t_bidirectional_list	*it_origin;
+	t_bidirectional_list	*it_continuous;
+	long long				continuous_number;
+
+	context->stack_a = ft_blst_first(context->stack_a);
+	it_origin = context->stack_a;
+	it_continuous = NULL;
+	while (it_origin)
+	{
+		continuous_number = number_of_inferior_value(
+				context->stack_a,
+				(long long)it_origin->content
+				);
+		it_origin = it_origin->next;
+		ft_blst_new_back(
+			&it_continuous,
+			(void *)continuous_number,
+			NULL);
+	}
+	ft_blst_clear(&it_origin, NULL);
+	context->stack_a = it_continuous;
 }
