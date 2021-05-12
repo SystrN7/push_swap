@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+         #
+#    By: seruiz <seruiz@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/05 14:25:53 by fgalaup           #+#    #+#              #
-#    Updated: 2021/05/10 14:46:00 by fgalaup          ###   ########lyon.fr    #
+#    Updated: 2021/05/12 12:29:48 by seruiz           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRCS_COMMON		=		./Sources/_Common/Stack/stack.c \
 						./Sources/_Common/Instruction/instruction.c \
 						./Sources/_Common/Utilities/error.c
 
-SRCS_SORTER		=		./Sources/Sorter/sorter.c
+SRCS_SORTER		=		./Sources/Sorter/sorter.c\
+						./Sources/Sorter/generic_sorter.c
 
 SRCS_CHECKER	=		./Sources/Checker/checker.c
 

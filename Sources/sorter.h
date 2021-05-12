@@ -6,7 +6,7 @@
 /*   By: seruiz <seruiz@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 14:40:55 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/12 11:44:00 by seruiz           ###   ########lyon.fr   */
+/*   Updated: 2021/05/12 12:47:07 by seruiz           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,8 @@
 void	sorter_init(t_common_context *context, char const *argv[]);
 void	sorter_start(char const *argv[]);
 void	sorter_shutdown(t_common_context *context);
+
+void	ft_blst_show(t_bidirectional_list *stack);
+void	generic_sorter(t_common_context *context);
 
 #endif

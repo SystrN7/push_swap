@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instruction.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: seruiz <seruiz@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 11:36:34 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/12 11:21:06 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/05/12 11:54:19 by seruiz           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	intruction_add_exec(t_common_context *context, int instruction_code)
 	long long	instruction_code_tmp;
 	int			i;
 
+	i = 0;
 	while (instruction_set[i].token != NULL)
 	{
 		if (instruction_set[i].type == instruction_code)
@@ -75,7 +76,7 @@ void	intruction_show_list(t_common_context *context)
 		i = 0;
 		while (instruction_set[i].token != NULL)
 		{
-			if (instruction_set[i].type == it->content)
+			if (instruction_set[i].type == (int)it->content)
 			{
 				ft_printf("%s\n", instruction_set[i].token);
 				break ;
