@@ -6,7 +6,7 @@
 /*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 14:38:42 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/11 16:36:27 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/05/17 14:10:34 by fgalaup          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,23 @@
 
 int	main(int argc, char const *argv[])
 {
+	char	**args;
+	int		i;
+
 	if (argc <= 1)
 		return (0);
-	checker_start(argv);
+	if (argc == 2)
+		args = ft_split(argv[1], ' ');
+	else
+		args = (char **)argv + 1;
+	checker_start((const char **)args);
+	if (argc == 2)
+	{
+		i = 0;
+		while (args[i])
+			ft_managed_free(args[i++]);
+		ft_managed_free(args);
+	}
 	return (0);
 }
 
@@ -24,7 +38,7 @@ void	checker_init(t_common_context *context, char const *argv[])
 {
 	ft_managed_termination_function((t_ftermination) checker_shutdown);
 	ft_managed_termination_params(context);
-	context->stack_a = stack_create(argv + 1);
+	context->stack_a = stack_create(argv);
 	context->stack_b = NULL;
 }
 
