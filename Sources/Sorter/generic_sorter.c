@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   generic_sorter.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seruiz <seruiz@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 12:17:33 by seruiz            #+#    #+#             */
-/*   Updated: 2021/05/12 16:58:56 by seruiz           ###   ########lyon.fr   */
+/*   Updated: 2021/05/17 11:32:21 by fgalaup          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sorter.h"
 
-int		ft_get_num_pos(t_bidirectional_list	*stack, int	min, int max)
+int	ft_get_num_pos(t_bidirectional_list	*stack, int	min, int max)
 {
 	int						i;
 	int						pos_top;
@@ -44,7 +44,7 @@ int		ft_get_num_pos(t_bidirectional_list	*stack, int	min, int max)
 void	extract_chunk(t_common_context *context, int min, int max)
 {
 	int	pos;
-	int len;
+	int	len;
 
 	pos = ft_get_num_pos(context->stack_a, min, max);
 	len = ft_lstsize((t_list *)context->stack_a);
@@ -52,20 +52,15 @@ void	extract_chunk(t_common_context *context, int min, int max)
 	{
 		if (pos < (len / 2) + (len % 2))
 		{
-			while (pos > 0)
-			{
+			while (pos > 0 && pos--)
 				intruction_add_exec(context, INSTRUCTION_ROTATE_A);
-				pos--;
-			}
 			intruction_add_exec(context, INSTRUCTION_POP_A_PUSH_B);
 		}
 		else
 		{
-			while (context->stack_len - ft_lstsize((t_list *)context->stack_b) - pos > 0)
-			{
+			while (context->stack_len - ft_lstsize(
+					(t_list *)context->stack_b) - pos > 0 && ++pos)
 				intruction_add_exec(context, INSTRUCTION_REVERSE_ROTATE_A);
-				pos++;
-			}
 			intruction_add_exec(context, INSTRUCTION_POP_A_PUSH_B);
 		}
 		pos = ft_get_num_pos(context->stack_a, min, max);
@@ -73,7 +68,7 @@ void	extract_chunk(t_common_context *context, int min, int max)
 	}
 }
 
-int		ft_get_max_pos(t_bidirectional_list *stack)
+int	ft_get_max_pos(t_bidirectional_list *stack)
 {
 	int						pos;
 	int						max_hold;
@@ -97,11 +92,10 @@ int		ft_get_max_pos(t_bidirectional_list *stack)
 	return (pos);
 }
 
-
 void	repush_stack(t_common_context *context)
 {
 	int	pos;
-	int len;
+	int	len;
 
 	pos = ft_get_max_pos(context->stack_b);
 	len = ft_lstsize((t_list *)context->stack_b);
@@ -109,11 +103,8 @@ void	repush_stack(t_common_context *context)
 	{
 		if (pos < (len / 2) + (len % 2))
 		{
-			while (pos > 0)
-			{
+			while (pos > 0 && pos--)
 				intruction_add_exec(context, INSTRUCTION_ROTATE_B);
-				pos--;
-			}
 			intruction_add_exec(context, INSTRUCTION_POP_B_PUSH_A);
 		}
 		else
