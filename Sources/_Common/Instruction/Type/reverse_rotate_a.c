@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate_a.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seruiz <seruiz@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 16:04:02 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/11 10:28:25 by seruiz           ###   ########lyon.fr   */
+/*   Updated: 2021/05/12 16:31:53 by fgalaup          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ void	reverse_rotate_a(t_common_context *context)
 	link_to_move->prev = NULL;
 	link_to_move->next = context->stack_a;
 	context->stack_a->prev = link_to_move;
-	write (1, "rra\n", 4);
+
 }
