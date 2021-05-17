@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seruiz <seruiz@student.42lyon.fr>          +#+  +:+       +#+         #
+#    By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/05 14:25:53 by fgalaup           #+#    #+#              #
-#    Updated: 2021/05/12 12:29:48 by seruiz           ###   ########lyon.fr    #
+#    Updated: 2021/05/12 16:15:19 by fgalaup          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CHECKER_NAME	= checker
 
 SRCS_COMMON		=		./Sources/_Common/Stack/stack.c \
 						./Sources/_Common/Stack/stack_is_sort.c \
+						./Sources/_Common/Stack/stack_show.c \
 						./Sources/_Common/Instruction/Type/swap_first_a_b.c \
 						./Sources/_Common/Instruction/Type/swap_first_a.c \
 						./Sources/_Common/Instruction/Type/swap_first_b.c \
@@ -31,7 +32,8 @@ SRCS_COMMON		=		./Sources/_Common/Stack/stack.c \
 						./Sources/_Common/Utilities/error.c
 
 SRCS_SORTER		=		./Sources/Sorter/sorter.c\
-						./Sources/Sorter/generic_sorter.c
+						./Sources/Sorter/generic_sorter.c \
+						./Sources/Sorter/small_stack_sorter.c
 
 SRCS_CHECKER	=		./Sources/Checker/checker.c
 
