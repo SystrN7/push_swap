@@ -6,12 +6,14 @@
 /*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 15:36:29 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/06 13:42:02 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/05/17 14:08:58 by fgalaup          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "common.h"
 #include "common_error.h"
 
+	// t_common_context *context,
 void	error_fatal(
 	int error_code,
 	 ...
@@ -19,7 +21,7 @@ void	error_fatal(
 {
 	va_list	args;
 
-	ft_putstr_fd(standard_error, "Error:");
+	ft_putstr_fd(standard_error, "Error ");
 	va_start(args, error_code);
 	error_print_messages(error_code, args);
 	va_end(args);
@@ -35,7 +37,7 @@ void	error_message(
 {
 	va_list	args;
 
-	ft_putstr_fd(standard_error, "Error\n");
+	ft_putstr_fd(standard_error, "Error ");
 	va_start(args, error_code);
 	error_print_messages(error_code, args);
 	va_end(args);
