@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generic_sorter.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: seruiz <seruiz@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 12:17:33 by seruiz            #+#    #+#             */
-/*   Updated: 2021/05/17 11:32:21 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/05/18 10:27:30 by seruiz           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,8 @@ void	generic_sorter(t_common_context *context)
 
 	if (context->stack_len > 200)
 		chunks = 11;
+	else if (context->stack_len > 500)
+		chunks = 22;
 	else
 		chunks = 5;
 	chunk_size = context->stack_len / chunks;
@@ -141,5 +143,7 @@ void	generic_sorter(t_common_context *context)
 		min = min + chunk_size;
 		max = max + chunk_size;
 	}
+	while (context->stack_a)
+		intruction_add_exec(context, INSTRUCTION_POP_A_PUSH_B);
 	repush_stack(context);
 }

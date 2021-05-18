@@ -6,7 +6,7 @@
 /*   By: seruiz <seruiz@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 16:04:02 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/12 16:45:39 by seruiz           ###   ########lyon.fr   */
+/*   Updated: 2021/05/18 10:28:15 by seruiz           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,4 @@ void	reverse_rotate_b(t_common_context *context)
 	link_to_move->prev = NULL;
 	link_to_move->next = context->stack_b;
 	context->stack_b->prev = link_to_move;
-	write (1, "rrb\n", 4);
 }
