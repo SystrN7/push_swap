@@ -6,7 +6,7 @@
 /*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 14:51:42 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/12 13:02:57 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/05/18 12:33:15 by fgalaup          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_blst	stack_create(char const *argv[])
 {
 	t_bidirectional_list	*stack;
 	size_t					i;
+	size_t					len;
 	long long				number;
 	size_t					number_size;
 
@@ -25,7 +26,10 @@ t_blst	stack_create(char const *argv[])
 	while (argv[i])
 	{
 		number_size = ft_strtoll(argv[i], &number);
-		if ((argv[i][0] == '\0') || number_size != ft_strlen(argv[i]))
+		len = ft_strlen(argv[i]);
+		if (argv[i][0] == '-')
+			len--;
+		if (number_size != len || argv[i][0] == '\0')
 			error_fatal(ERROR_ARG_NOT_NUMBER, argv[i]);
 		if (number_size > 10 || number > INT_MAX || number < INT_MIN)
 			error_fatal(ERROR_ARG_INT_BIGGER, argv[i]);
