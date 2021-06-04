@@ -6,7 +6,7 @@
 /*   By: fgalaup <fgalaup@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 14:47:56 by fgalaup           #+#    #+#             */
-/*   Updated: 2021/05/18 12:16:02 by fgalaup          ###   ########lyon.fr   */
+/*   Updated: 2021/06/04 11:16:24 by fgalaup          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	sorter_start(char const *argv[])
 	sorter_init(context, argv);
 	context->stack_a = ft_blst_first(context->stack_a);
 	context->stack_len = ft_lstsize((t_list *)context->stack_a);
-	if (context->stack_len <= 1)
+	if (context->stack_len <= 1
+		|| (stack_is_sort(context->stack_a) && context->stack_b == NULL))
 		sorter_shutdown(context);
 	else if (context->stack_len <= 2)
 		sort_two(context);
